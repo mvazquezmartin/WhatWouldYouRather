@@ -1,7 +1,7 @@
-const dilemmaController = require("../controller/controller.dilemma")
+const dilemmaController = require("../controller/controller.dilemma");
 
-const router = (app) =>{
-  app.use("/api/dilemma", dilemmaController)
-}
+const router = (app) => {
+  app.use("/api/dilemma", dilemmaController);
+};
 
-module.exports = router
+module.exports = router;
