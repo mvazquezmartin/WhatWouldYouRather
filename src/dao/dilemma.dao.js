@@ -12,7 +12,7 @@ class DilemmaDao {
       ]);
       return dilemma;
     } catch (error) {
-      console.log("Error in DilemmaDao",error)
+      console.log("Error in DilemmaDao getRandomDilemma");
       throw error;
     }
   }
@@ -22,7 +22,7 @@ class DilemmaDao {
       const dilemma = await Dilemma.findById(id);
       return dilemma;
     } catch (error) {
-      console.log("Error in DilemmaDao",error)
+      console.log("Error in DilemmaDao findDilemmaById");
       throw error;
     }
   }
@@ -32,24 +32,25 @@ class DilemmaDao {
       const newDilemma = await Dilemma.create(dilemma);
       return newDilemma;
     } catch (error) {
-      console.log("Error in DilemmaDao",error)
+      console.log("Error in DilemmaDao addDilemma");
       throw error;
     }
   }
 
   async addManyDilemma() {
     try {
-      const fileDilemma = await dilemaManager.getAllDilemmas();      
+      const fileDilemma = await dilemaManager.getAllDilemmas();
       const addDilemmas = await Dilemma.insertMany(fileDilemma);
       return addDilemmas;
     } catch (error) {
-      console.log("Error in DilemmaDao",error)
+      console.log("Error in DilemmaDao addManyDilemma");
       throw error;
     }
   }
 
   async deleteAllDilemmaForDevs() {
     await Dilemma.deleteMany();
+    console.log("Everything has gone (ಠ_ಠ)");
   }
 }
 

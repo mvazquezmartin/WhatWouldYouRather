@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
     const { opt1, opt2 } = req.body;
     const newDilemmaInfo = { opt1, opt2 };
 
-    const newDilemma = await Dilemmas.create(newDilemmaInfo);
+    const newDilemma = await Dilemmas.addDilemma(newDilemmaInfo);
     res.status(201).json({
       message: "Dilemma successfully added",
       opt1: newDilemma.opt1,
@@ -48,7 +48,7 @@ router.post("/", async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Something wnet wrong" });
+    res.status(500).json({ message: "Something went wrong" });
   }
 });
 
@@ -64,6 +64,7 @@ router.put("/addmany", async (req, res) => {
     await Dilemmas.addManyDilemma();
     res.status(201).json({ message: "Dilemmas successfully added" });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ message: "Something went wrong" });
   }
 });

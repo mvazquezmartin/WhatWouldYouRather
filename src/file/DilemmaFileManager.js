@@ -11,7 +11,7 @@ class DilemmaManager {
       await this.readFile();
       return this.dilemmas;
     } catch (error) {
-      console.log("Error is DilemmaManager",error)
+     console.log("Error in DilemmaManager getAllDilemmas");
       throw error;
     }
   }
@@ -21,7 +21,7 @@ class DilemmaManager {
       const data = await fs.promises.readFile(file, "utf-8");
       if (data) this.dilemmas = JSON.parse(data);
     } catch (error) {
-      console.log("Error is DilemmaManager",error)
+      console.log("Error in DilemmaManager readFile");
       throw error;
     }
   }
