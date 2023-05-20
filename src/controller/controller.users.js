@@ -8,6 +8,7 @@ const authorization = require("../middlewares/authorization.middleware");
 const router = Router();
 const Users = new UserDao();
 
+//CREATE USER
 router.post("/", async (req, res) => {
   try {
     const { nick_name, email, password } = req.body;
@@ -27,7 +28,9 @@ router.post("/", async (req, res) => {
     };
 
     const newUser = await Users.createUser(newUserInfo);
-    const access_token = generateToken({ email: newUser.email });
+    const access_token = generateToken({
+      email: newUser.email,
+    });
 
     res.status(201).json({
       status: "success",
@@ -43,7 +46,7 @@ router.post("/", async (req, res) => {
 //GET ALL USERS
 router.get(
   "/",
-  passport.authenticate("jwt"),
+  passport.authenticate("jwt", { session: false }),
   authorization("admin"),
   async (req, res) => {
     try {
@@ -57,10 +60,15 @@ router.get(
 );
 
 //DELETE ALL
-router.delete("/deleteAllUser", async (req, res) => {
-  await Users.deleteAllUser();
-  res.json({ message: "Everything has gone (ಠ_ಠ)" });
-});
+router.delete(
+  "/deleteAllUser",
+  passport.authenticate("jwt", { session: false }),
+  authorization("admin"),
+  async (req, res) => {
+    await Users.deleteAllUser();
+    res.json({ message: "Everything has gone (ಠ_ಠ)" });
+  }
+);
 
 router.get("/failregister", (req, res) => {
   console.log("Failed register");

@@ -4,6 +4,12 @@ const Dilemma = require("./model/dilema.model");
 const dilemaManager = new DilemmaManager();
 
 class DilemmaDao {
+  async getAllDilemmas(){
+    const dilemmas = await Dilemma.find()
+    return dilemmas
+  }
+
+
   async getRandomDilemma() {
     try {
       const dilemma = await Dilemma.aggregate([
