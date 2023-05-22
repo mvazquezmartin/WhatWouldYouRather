@@ -66,7 +66,7 @@ router.delete(
   authorization("admin"),
   async (req, res) => {
     await Users.deleteAllUser();
-    res.json({ message: "Everything has gone (ಠ_ಠ)" });
+    res.json({ message: "Every Users has gone (ಠ_ಠ)" });
   }
 );
 

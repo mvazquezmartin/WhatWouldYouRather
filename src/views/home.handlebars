@@ -1,12 +1,49 @@
-<h2>Login</h2>
-<form id="loginForm">
-  <label for="">User</label>
-  <input type="text" name="nick_name">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Dilemma</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="/login"
+              >Login</a>
+              <a class="nav-link" href="/singup">SingUp</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-12" id="nextContainer">
 
-  <label for="">PassWord</label>
-  <input type="text" name="password">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <button id="opt1"></button>
+        <p id="percentageOp1"></p>
+      </div>
+      <div class="col-6">
+        <button id="opt2"></button>
+        <p id="percentageOp2"></p>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <button type="submit">Login</button>
-</form>
-
-<script src=""></script>
+<script type="module" src="../public/js/home.js"></script>

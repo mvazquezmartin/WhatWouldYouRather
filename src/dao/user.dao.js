@@ -21,10 +21,14 @@ class UserDao {
     }
   }
 
-  async getAllUser(){
-    const users = await Users.find()
-    return users
+  async getAllUser() {
+    try{
+    const users = await Users.find();
+    return users;
+  }catch(error){
+    console.log("Error in UserDao getAllUser")
   }
+}
 
   async findUserById(id) {
     try {
@@ -37,8 +41,13 @@ class UserDao {
   }
 
   async deleteAllUser() {
-    await Users.deleteMany();
-    console.log("Everything has gone (ಠ_ಠ)");
+    try{
+    const deleteUsers = await Users.deleteMany({ role: "user" });
+    console.log("Every Users has gone (ಠ_ಠ)");
+  }catch(error){
+    console.log("Error in UserDao deelteAllUser")
+    throw error
+  }
   }
 }
 

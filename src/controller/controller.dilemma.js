@@ -28,7 +28,7 @@ router.put("/:id/:opt", async (req, res) => {
 
     const opt1Percentage = Math.floor(dilemma.opt1Percentage);
     const opt2Percentage = Math.floor(dilemma.opt2Percentage);
-    const dilemmaVotes = dilemma.totalVotes;
+    const dilemmaVotes = dilemma.totalVotes + 100;
 
     res.json({ dilemmaVotes, opt1Percentage, opt2Percentage });
   } catch (error) {

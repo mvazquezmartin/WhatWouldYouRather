@@ -67,7 +67,6 @@ const initializePassport = () => {
 
 module.exports = initializePassport;
 
-
 // passport.use(
 //   "register",
 //   new LocalStrategy(
