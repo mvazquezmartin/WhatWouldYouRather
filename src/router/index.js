@@ -7,9 +7,9 @@ const singupController = require("../controller/controller.singup");
 
 const router = (app) => {
   app.use("/dilemma", homeDilemmaController);
+  app.use("/api/dilemma", dilemmaController);
   app.use("/login", loginController);
   app.use("/singup", singupController);
-  app.use("/api/dilemma", dilemmaController);
   app.use("/auth", authController);
   app.use("/users", userController);
 };

@@ -46,7 +46,9 @@ router.get(
 router.get(
   "/googlecallback",
   passport.authenticate("google", { failureRedirect: "/auth/faillogin" }),
-  async (req, res) => {}
+  async (req, res) => {
+    res.redirect("http://localhost:3030/dilemma")
+  }
 );
 
 //LOGOUT
