@@ -27,7 +27,7 @@ Permisos para usuarios:
 - Crear nueva solicutd de dilemas 
 - Contador de votos (a desarrolar)
 TEST ADMIN 
-* email: admin@admin
+* email: admin@admin.com
 * password: admin
 Permisos de admin:
 - Ver todos los usuarios
