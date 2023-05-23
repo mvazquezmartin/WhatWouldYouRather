@@ -23,6 +23,8 @@ Modulos
 TEST USER
 * email: user1@admin.com
 * password: user1
+</br>
+</br>
 Permisos para usuarios:
 - Crear nueva solicutd de dilemas 
 - Contador de votos (a desarrolar)
@@ -30,6 +32,8 @@ Permisos para usuarios:
 TEST ADMIN 
 * email: admin@admin.com
 * password: admin
+</br>
+</br>
 Permisos de admin:
 - Ver todos los usuarios
 - Crear desde FileSistem
