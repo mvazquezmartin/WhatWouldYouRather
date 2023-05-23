@@ -8,6 +8,7 @@ const generateToken = (user) => {
   return token;
 };
 
+//PASSPORT-JWT COMPRUEBA EL TOKEN - DEPRECATED
 const authToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader)
