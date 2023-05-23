@@ -47,7 +47,13 @@ router.get(
   "/googlecallback",
   passport.authenticate("google", { failureRedirect: "/auth/faillogin" }),
   async (req, res) => {
-    res.redirect("http://localhost:3030/dilemma")
+    const access_token = generateToken({
+      email: req.user.email,
+      role: req.user.role,
+    });
+    res
+      .cookie("authToken", access_token, { httpOnly: true })
+      .redirect("/dilemma");
   }
 );
 

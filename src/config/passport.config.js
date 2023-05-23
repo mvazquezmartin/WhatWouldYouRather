@@ -1,14 +1,11 @@
 const passport = require("passport");
-const local = require("passport-local");
 const jwt = require("passport-jwt");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const UserDao = require("../dao/user.dao");
-const { pwValidate, createHash } = require("../utils/cryptoPassword.util");
 const cookieExtractor = require("../utils/cookieExtractor.util");
-const { PRIVATEKEY, generateToken } = require("../utils/jwt.util");
+const { PRIVATEKEY } = require("../utils/jwt.util");
 require("dotenv").config();
 
-const LocalStrategy = local.Strategy;
 const JWTStrategy = jwt.Strategy;
 const Users = new UserDao();
 
@@ -39,10 +36,12 @@ const initializePassport = () => {
         callbackURL: "http://localhost:3030/auth/googlecallback",
       },
       async (accesToken, refreshToken, profile, done) => {
+        console.log(profile);
         try {
           const user = await Users.findUser(profile._json.email);
           if (!user) {
             const userInfo = {
+              nick_name: profile._json.name,
               email: profile._json.email,
             };
             const newUser = await Users.createUser(userInfo);
