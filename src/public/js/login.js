@@ -7,7 +7,7 @@ form.addEventListener("submit", (e) => {
   const obj = {};
 
   data.forEach((value, key) => (obj[key] = value));
-  console.log(obj)
+  console.log(obj);
 
   fetch(url, {
     headers: {
@@ -17,6 +17,9 @@ form.addEventListener("submit", (e) => {
     body: JSON.stringify(obj),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {
+      const cookie = document.cookie;
+      console.log(data), console.log(cookie);
+    })
     .catch((error) => console.log(error));
 });

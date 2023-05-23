@@ -36,7 +36,7 @@ const initializePassport = () => {
         callbackURL: "http://localhost:3030/auth/googlecallback",
       },
       async (accesToken, refreshToken, profile, done) => {
-        console.log(profile);
+        console.log(profile._json);
         try {
           const user = await Users.findUser(profile._json.email);
           if (!user) {

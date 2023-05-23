@@ -3,6 +3,7 @@ const opt1Element = document.getElementById("opt1");
 const opt2Element = document.getElementById("opt2");
 const opt1Percentage = document.getElementById("percentageOp1");
 const opt2Percentage = document.getElementById("percentageOp2");
+const logout = document.getElementById("logout");
 
 let idOpt;
 
@@ -33,7 +34,7 @@ function voteFunction() {
       method: "PUT",
     })
       .then((response) => response.json())
-      .then((data) => {        
+      .then((data) => {
         opt1Percentage.textContent = "%" + data.opt1Percentage;
         opt2Percentage.textContent = "%" + data.opt2Percentage;
         opt1Element.disabled = true;
@@ -43,22 +44,29 @@ function voteFunction() {
       .catch((error) => {
         console.log("error request", error);
       });
-    };
-    
-    opt1Element.addEventListener("click", () => {
-      sendVote("opt1");
-    });
-    opt2Element.addEventListener("click", () => {
-      sendVote("opt2");
-    });
-  }
-  
-  //FUNCION RENDER BUTTON NEXT
-  function renderNexButton(votes) {
-    const nextContainer = document.getElementById("nextContainer");
-    const nextDilemma = document.getElementById("nextDilemma");    
-    
-    if (!nextDilemma) {
+  };
+
+  opt1Element.addEventListener("click", () => {
+    sendVote("opt1");
+  });
+  opt2Element.addEventListener("click", () => {
+    sendVote("opt2");
+  });
+}
+
+const logoutFunction = () => {
+  fetch("/auth/logout")
+    .then((response) => response.json)
+    .then(console.log("logout"));
+};
+logout.addEventListener("click", logoutFunction);
+
+//FUNCION RENDER BUTTON NEXT
+function renderNexButton(votes) {
+  const nextContainer = document.getElementById("nextContainer");
+  const nextDilemma = document.getElementById("nextDilemma");
+
+  if (!nextDilemma) {
     const miNodoButton = document.createElement("button");
     miNodoButton.textContent = "NEXT";
     miNodoButton.setAttribute("id", "nextDilemma");
@@ -71,13 +79,13 @@ function voteFunction() {
       opt1Percentage.textContent = "";
       opt2Percentage.textContent = "";
       opt1Element.textContent = "";
-      opt2Element.textContent = "";      
-      nextContainer.removeChild(miNodoButton)
-      nextContainer.removeChild(miNodoVote)      
+      opt2Element.textContent = "";
+      nextContainer.removeChild(miNodoButton);
+      nextContainer.removeChild(miNodoVote);
       randomDilemmaFetch();
     });
-    nextContainer.appendChild(miNodoButton)
-    nextContainer.appendChild(miNodoVote)
+    nextContainer.appendChild(miNodoButton);
+    nextContainer.appendChild(miNodoVote);
   }
 }
 

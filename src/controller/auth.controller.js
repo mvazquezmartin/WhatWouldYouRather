@@ -51,9 +51,11 @@ router.get(
       email: req.user.email,
       role: req.user.role,
     });
-    res
-      .cookie("authToken", access_token, { httpOnly: true })
-      .redirect("/dilemma");
+    res.cookie("authToken", access_token, { httpOnly: true }).json({
+      status: "success",
+      message: "Session initialized",
+      token: access_token,
+    });
   }
 );
 

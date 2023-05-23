@@ -8,7 +8,7 @@ const generateToken = (user) => {
   return token;
 };
 
-//PASSPORT-JWT COMPRUEBA EL TOKEN - DEPRECATED
+//PASSPORT-JWT VERIFICA EL TOKEN - DEPRECADO
 const authToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (!authHeader)
